@@ -1,0 +1,24 @@
+<p> Hi! </p>
+
+<% if @errors %>
+  <% @errors.each do |err| %>
+    <p> 
+      <span class="error">
+        <%= err %>
+      </span>
+    </p>
+  <% end %>
+<% end %>
+
+
+<form method="post" action="/login">
+  Login:<br><br>
+
+  Username:<br>
+  <input type="text" name="username"><br><br>
+
+  Password:<br>
+  <input type="password" name="password"><br><br>
+
+  <input type="submit" value="login">
+</form>

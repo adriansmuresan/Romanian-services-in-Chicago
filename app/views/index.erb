@@ -1,0 +1,14 @@
+
+<% if !session[:user_id] %>
+	<p>Sign up for a new account:</p>
+	<form method="get" action="/users/new">
+		<input type="submit" value="sign up" >
+	</form>
+<% else %>
+	<h3> Welcome, <%= @user.username %></h3>
+ <% end %>
+
+<h4>Available categories:</h4>
+<% @categories.each do |cat| %>
+	<p><a href="/categories/<%= cat.id %>"><%= cat.title %></a></p>
+<% end %>

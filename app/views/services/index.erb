@@ -1,0 +1,5 @@
+<h2>These are the services for category: <%= @category.title %></h2>
+
+<% @cat_services.each do |service| %>
+  <p><a href="/services/<%= service.id %>"> Service title: <%= service.title %></a></p>
+<% end %>

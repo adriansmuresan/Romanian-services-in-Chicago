@@ -1,0 +1,16 @@
+<% if @errors %>
+	<p><% @errors.each do |error| %></p>
+		<p><%= error %></p>
+	<% end %>
+<% end %>
+
+<form method="post" action="/users/new">
+  Please sign up:<br><br>
+
+  Username:<br>
+  <input type="text" name="username"><br><br>
+
+  Password:<br>
+  <input type="password" name="password"><br><br>
+  <input type="submit" value="signup">
+</form>
