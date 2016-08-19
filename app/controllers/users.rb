@@ -3,14 +3,16 @@
 get '/users/new' do
 	erb :'/users/new'
 end
+
 ### add new user
 get '/login' do
 	erb :'/users/login'
 end
-### show user
 
+### show user
 get '/users/:id' do
 	@user = User.find(params[:id])
+	@user_services = @user.services
 	erb :'/users/show'
 end
 

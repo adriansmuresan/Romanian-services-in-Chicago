@@ -14,12 +14,32 @@ get '/services/:id' do
   erb :'/services/show'
 end
 
+# get '/services' do
+
+# end
+
 post '/services' do
-  @new_service = Service.new(title: params[:title], description: params[:description], contact_info: params[:contact_info])
+  category = Category.find_by(title: params[:category])
+  cat_id = category.id
+  @new_service = Service.new(title: params[:title], description: params[:description], contact_info: params[:contact_info], category_id: cat_id, user_id: session[:user_id])
+  @user = User.find(session[:user_id])
+  # @user_services = @user.services
   if @new_service.save
-    erb:'/users/show'
+    puts @user.services
+    @user_services = @user.services
+    erb :"/users/show"
   else
-    # Aici am ramas!!!########################
-    # !Nu uita sa scrii erorile si in erb services/new
+    @errors = @new_service.errors.full_messages
+    erb :'/services/new'
   end
+end
+
+put '/services/:id' do
+
+end
+
+delete '/services/:id' do
+  service_to_delete= Service.find(params[:id])
+  service_to_delete.destroy!
+  redirect '/users/#{session[:user_id]}'
 end
