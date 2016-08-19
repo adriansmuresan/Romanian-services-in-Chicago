@@ -8,11 +8,14 @@
 <h4>These are your posted services:</h4>
 
 <% @user_services.each do |service| %>
+
   <h4><%= service.title %>
-  <form method="GET" action="/services/<%=service.id%>">
+
+  <form method="GET" action="/services/<%=service.id%>/edit">
     <!-- <input type="hidden" name="_method" value="PUT"> -->
-    <input type="text" value="edit">
+    <input type="submit" value="edit">
   </form><br>
+
   <form method="POST" action="/services/<%=service.id%>">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="delete">
